@@ -1,0 +1,16 @@
+{
+  "name": "pi-server",
+  "version": "0.1.5",
+  "description": "A simple zetta server for raspberry pi",
+  "main": "pi-server.js",
+  "scripts": {
+    "start": "sudo node pi-server.js"
+  },
+  "dependencies": {
+    "zetta": "1.0.0-beta.5",
+    "wiring-pi": "*"
+  },
+  "engines": {
+    "node": "4.0.0"
+  }
+}
