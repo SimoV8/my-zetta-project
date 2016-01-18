@@ -1,0 +1,132 @@
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Zetta Client</title>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-material/angular-material.css"/>
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="bower_components/angular-color-picker/angular-color-picker.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-app="MyApp" ng-cloak layout="row">
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!-- JQuery -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<!-- AngularJS & Angular Material -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+
+<!-- Angular UI-Router -->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+<!-- Zingchart Angularjs -->
+<script src="bower_components/zingchart/client/zingchart.min.js"></script>
+<script src="bower_components/zingchart-angularjs/src/zingchart-angularjs.js"></script>
+
+<!-- Angular Color Picker -->
+<script src="bower_components/angular-color-picker/angular-color-picker.js"></script>
+
+    <span flex></span>
+
+    <div layout-sm="column" flex="70">
+
+        <h1 class="md-display-3">Zetta Client</h1>
+
+        <md-content class="md-padding" layout-wrap layout-align="center start" layout-xs="column">
+            <div layout="row" ng-controller="RaspberryController" flex>
+
+                <md-card class="md-padding" flex>
+                    <md-card-title-text>
+                        <span class="md-headline">Temperature</span>
+                    </md-card-title-text>
+                    <md-card-content>
+                        <div zingchart id="chart-1" zc-json="myJson" zc-width="600px" zc-height="350px"></div>
+                        <span >Temperature: {{ temperature }} °C</span>
+                        <div>Threshold:
+                            <div layout>
+                                <md-slider flex min="0.0" max="40.0" step="0.5" ng-model="threshold" aria-label="blue" id="slider" class></md-slider>
+                                <div flex="20" layout layout-align="center center">
+                                    <input flex type="number" ng-model="threshold" aria-label="blue" aria-controls="slider">
+                                </div>
+                            </div>
+                        </div>
+                    </md-card-content>
+                </md-card>
+
+                <md-card class="md-padding" flex>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">LED</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div layout="row">
+                            <p flex>State: </p>
+                            <p flex="50" style="text-align: center;"> {{ ledState }} </p>
+                        </div>
+
+                        <div layout="row">
+                            <div layout-align="center" flex>
+                                <p>Color:</p>
+                            </div>
+
+                            <md-button class="md-raised" style="background-color: {{ color }}"
+                                             ng-click="setColor()" flex>{{ color }}</md-button>
+                        </div>
+                    </md-card-content>
+                </md-card>
+            </div>
+            <div layout="row" ng-controller="LoggerController" flex>
+                <md-card class="md-padding" flex>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">Logger</span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <md-virtual-repeat-container id="vertical-container" style="height: 150px; border: solid 1px grey;">
+                            <div md-virtual-repeat="item in logs" style="padding: 5px;"
+                                 class="repeated-item" flex>
+                                {{item}}
+                            </div>
+                        </md-virtual-repeat-container>
+                        <div layout="row" style="height: 40px; margin-bottom: 10px; margin-top: 10px;">
+                            <md-input-container  md-no-float class="md-block md-padding" flex>
+                                <input ng-model="newMessage" placeholder="Add log message">
+                            </md-input-container>
+                            <md-button class="md-raised md-primary" flex="20" ng-click="addLog()">Add</md-button>
+                        </div>
+                        <div layout="row" flex="" style="height: 40px;">
+                           <span class="md-block md-padding" flex="">Max logs length: {{ length }} </span>
+                            <md-button class="md-raised md-primary" flex="20" ng-click="setLength()">Set New Length</md-button></p>
+                        </div>
+
+
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
+
+    </div>
+
+    <span flex></span>
+
+<!-- Your application bootstrap  -->
+<script type="text/javascript" src="app.js" ></script>
+<script type="text/javascript" src="raspberry.controller.js"></script>
+<script type="text/javascript" src="logger.controller.js"></script>
+<script type="text/javascript" src="select_color.controller.js"></script>
+<script type="text/javascript" src="set_length.controller.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,25 @@
+<md-dialog aria-label="Create new app" layout="column" style="width:40%;height:420px;">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Set length</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-padding" layout-padding layout="column">
+
+        <p>Insert the new max number of log messages to retrieve:</p>
+
+        <input type="number" ng-model="newLength" >
+
+        <span flex></span>
+        <div layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()" class="md-raised md-primary md-hue-1"> Cancel </md-button>
+            <md-button ng-click="save()" class="md-raised md-primary" ng-disabled="false" > Save </md-button>
+        </div>
+
+    </md-dialog-content>
+
+</md-dialog>

@@ -1,0 +1,27 @@
+<md-dialog aria-label="Create new app" layout="column" style="width:40%;height:420px;">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Select Color</h2>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <md-dialog-content class="md-padding" layout-padding layout="column">
+        <color-picker ng-model="color">
+        </color-picker>
+
+        <input type="text"
+               ng-model="color"
+               ng-init="color = '#f05a28'">
+
+        <span flex></span>
+        <div layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()" class="md-raised md-primary md-hue-1"> Cancel </md-button>
+            <md-button ng-click="save()" class="md-raised md-primary" ng-disabled="false" > Save </md-button>
+        </div>
+
+    </md-dialog-content>
+
+</md-dialog>
